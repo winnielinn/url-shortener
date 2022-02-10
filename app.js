@@ -1,5 +1,6 @@
 const express = require('express')
 const exphbs = require('express-handlebars').create({ defaultLayout: 'main', extname: '.hbs' })
+const urls = require('./models/urls.js')
 
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/url-data')
