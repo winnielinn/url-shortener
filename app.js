@@ -45,6 +45,16 @@ app.post('/', (req, res) => {
   }
 })
 
+app.get('/:random_code', (req, res) => {
+  const randomCode = req.params.random_code
+  return urls.findOne({ shortenUrl: randomCode })
+    .then(url => res.status(301).redirect(url.orignalUrl))
+    .catch(error => {
+      console.log(error)
+      res.render('error_page', { status: 500, errorMessage: error.message })
+    })
+})
+
 app.listen(port, () => {
   console.log(`App is running on http://localhost:${port}`)
 })
