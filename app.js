@@ -40,6 +40,8 @@ app.post('/', (req, res) => {
       .catch(error => console.log(error))
   } else {
     // if no, return error message
+    const errorMessage = 'Please input valid url'
+    res.render('error_page', { errorMessage })
   }
 })
 
