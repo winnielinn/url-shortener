@@ -1,25 +1,29 @@
 {{#if url}}
-<div class="container m-3">
-  <h4>Success! Please use this link:</h4>
+<div class="container mt-5">
+  <h4 class="text-center">Success! Please use this link:</h4>
   <a href="/urls/{{ url }}">http://localhost:3000/{{ url }}</a>
-  <div class="d-grid gap-2 d-md-flex m-3">
+  <div class="d-grid gap-2 d-md-flex justify-content-center mt-3">
     <a class="btn btn-secondary" href="/" role="button">Back</a>
     <button class="btn btn-primary" type="button">Copy</button>
   </div>
 </div>
 {{else}}
-<form class="row g-3 mt-3 needs-validation" id="form" action="/urls" method="POST" novalidate>
-  <div class="col-md-4">
-    <input type="url" class="form-control" name="url" placeholder="Input URL here" required>
-    <div class="valid-feedback">
-      Looks good!
+<div class="container mt-3">
+  <form action="/urls" method="POST" id="form" class="needs-validation" novalidate>
+    <div class="row mb-4 g-2 justify-content-md-center">
+      <div class="col-md-4 mt-5">
+        <input type="url" name="url" class="form-control" id="url" placeholder="Input URL here" required>
+        <div class="valid-feedback">
+          Good!
+        </div>
+        <div class="invalid-feedback">
+          Please input right web site address
+        </div>
+      </div>
     </div>
-    <div class="invalid-feedback">
-      Please input right web site address
+    <div class="d-grid gap-2 col-md-1 mx-auto">
+      <button type="submit" class="btn btn-outline-primary">Shorten</button>
     </div>
-  </div>
-  <div class="col-12">
-    <button class="btn btn-outline-primary" type="submit">Shorten</button>
-  </div>
-</form>
+  </form>
+</div>
 {{/if}}

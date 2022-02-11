@@ -1,0 +1,14 @@
+.frame {
+  height: 150px;
+  width: 150px;
+}
+
+img {  
+  max-height: 100%;  
+  max-width: 100%; 
+}
+
+a {
+  display: block;
+  text-align: center;
+}
