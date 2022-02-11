@@ -2,7 +2,7 @@ const express = require('express')
 const validUrl = require('valid-url')
 const randomString = require('random-string')
 const exphbs = require('express-handlebars').create({ defaultLayout: 'main', extname: '.hbs' })
-const urls = require('./models/urls.js')
+const URL = require('./models/URL.js')
 
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/url-data')
@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  const inputUrl = req.body.url
+  const input_url = req.body.url
   const randomCode = randomString({
     length: 5,
     numeric: true,
@@ -33,10 +33,10 @@ app.post('/', (req, res) => {
 
   // verify url
   // if yes, check existed data in database
-  if (validUrl.isUri(inputUrl)) {
-    return urls.findOne({ orignalUrl: inputUrl })
-      .then(url => url ? url : urls.create({ orignalUrl: inputUrl, shortenUrl: randomCode }))
-      .then(url => res.render('index', { url: url.shortenUrl }))
+  if (validUrl.isUri(input_url)) {
+    return URL.findOne({ orignal_url: input_url })
+      .then(url => url ? url : URL.create({ orignal_url: input_url, shorten_url: randomCode }))
+      .then(url => res.render('index', { url: url.shorten_url }))
       .catch(error => console.log(error))
   } else {
     // if no, return error message
@@ -47,8 +47,8 @@ app.post('/', (req, res) => {
 
 app.get('/:random_code', (req, res) => {
   const randomCode = req.params.random_code
-  return urls.findOne({ shortenUrl: randomCode })
-    .then(url => res.status(301).redirect(url.orignalUrl))
+  return URL.findOne({ shorten_url: randomCode })
+    .then(url => res.status(301).redirect(url.orignal_url))
     .catch(error => {
       console.log(error)
       res.render('error_page', { status: 500, errorMessage: error.message })

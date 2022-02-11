@@ -1,14 +1,14 @@
 const mongoose = require('mongoose')
 
 const urlSchema = new mongoose.Schema({
-  orignalUrl: {
+  orignal_url: {
     type: String,
     required: true
   },
-  shortenUrl: {
+  shorten_url: {
     type: String,
     required: true
   }
 })
 
-module.exports = mongoose.model('urls', urlSchema)
+module.exports = mongoose.model('URL', urlSchema)
