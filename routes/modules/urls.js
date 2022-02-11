@@ -20,11 +20,12 @@ router.post('/', (req, res) => {
       .then(url => url ? url : URL.create({ orignal_url: input_url, shorten_url: randomCode }))
       .then(url => res.render('index', { url: url.shorten_url }))
       .catch(error => console.log(error))
-  } else {
-    // if no, return error message
-    const errorMessage = 'Please input valid url'
-    res.render('error_page', { errorMessage })
-  }
+  } 
+  // else {
+  //   // if no, return error message
+  //   const errorMessage = 'Please input valid url'
+  //   res.render('error_page', { errorMessage })
+  // }
 })
 
 

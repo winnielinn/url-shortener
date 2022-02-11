@@ -6,6 +6,8 @@ require('./config/mongoose')
 const app = express()
 const port = 3000
 
+app.use(express.static('public'))
+
 app.engine('hbs', exphbs.engine)
 app.set('view engine', 'hbs')
 app.use(express.urlencoded({ extended: true }))
