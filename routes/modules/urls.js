@@ -18,18 +18,11 @@ router.post('/', (req, res) => {
     special: false,
   })
 
-  // create empty collection
-  const urlCollection = []
-
-  // find all data and push in urlCollection
+  // check if same randomCdoe in database
   URL.find({})
-    .then(url => {
-      for (let i = 0; i < url.length; i++) {
-        urlCollection.push(url[i].shorten_url)
-      }
-      // check same randomCdoe in database
-      // when true, generate randomCode again
-      while (urlCollection.includes(randomCode)) {
+    .then(urlList => {
+      while ((urlList).some((url) => url.shorten_url === randomCode)) {
+        // when true, generate randomCode again
         randomCode = randomString({
           length: 5,
           numeric: true,
