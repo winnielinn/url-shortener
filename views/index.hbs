@@ -6,6 +6,9 @@
     <a class="btn btn-secondary" href="/" role="button">Back</a>
     <button class="btn btn-primary" type="button" onclick="copyLink()">Copy</button>
   </div>
+  <div class="d-grid gap-2 d-md-flex justify-content-center mt-1">
+    <img src="http://chart.apis.google.com/chart?cht=qr&choe=UTF-8&chs=300x300&chl=http://localhost:3000/{{ url }}" />
+  </div>
 </div>
 {{else}}
 <div class="container mt-3">
