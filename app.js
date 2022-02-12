@@ -4,7 +4,9 @@ const routes = require('./routes')
 require('./config/mongoose')
 
 const app = express()
-const port = 3000
+const port = process.env.PORT  || 3000
+// In heroku, port is put in process.env.PORT
+// In local, port is 3000
 
 app.use(express.static('public'))
 
