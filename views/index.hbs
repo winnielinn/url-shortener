@@ -1,13 +1,13 @@
 {{#if url}}
 <div class="container mt-5">
   <h4 class="text-center">Success! Please use this link:</h4>
-  <a href="/{{ url }}" id="link">http://localhost:3000/{{ url }}</a>
+  <a href="/{{ url }}" id="link">{{ mainUrl }}/{{ url }}</a>
   <div class="d-grid gap-2 d-md-flex justify-content-center mt-3">
     <a class="btn btn-secondary" href="/" role="button">Back</a>
     <button class="btn btn-primary" type="button" onclick="copyLink()">Copy</button>
   </div>
   <div class="d-grid gap-2 d-md-flex justify-content-center mt-1">
-    <img src="http://chart.apis.google.com/chart?cht=qr&choe=UTF-8&chs=300x300&chl=http://localhost:3000/{{ url }}" />
+    <img src="http://chart.apis.google.com/chart?cht=qr&choe=UTF-8&chs=300x300&chl={{ mainUrl }}/{{ url }}" />
   </div>
 </div>
 {{else}}
